@@ -36,6 +36,9 @@
                         <tr>
                             <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPembelian.php' >Pembelian</a>"; ?></td>
                         </tr>
+                        <tr>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPengguna.php' >Pengguna</a>"; ?></td>
+                        </tr>
                     </table>
                 </div>
             </div>
