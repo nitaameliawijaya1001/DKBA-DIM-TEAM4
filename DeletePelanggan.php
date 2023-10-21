@@ -1,7 +1,7 @@
 
 <?php
 	require_once('Connection.php');
-	require_once('HakAkses.php');
+	require_once('Pelanggan.php');
 	$obj = new CrudHakAkses;
 
 	if(!$obj->detailData($_GET['IdAkses'])) die("Error : id akses tidak ada");

@@ -20,7 +20,7 @@
         <div class="container">
             <div class="card shadow mb-4 mt-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tutotrial PHP : CRUD PDO OOP PHP - ROOT93.CO.ID</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h6>
                 </div>
                 <div class="row m-auto">
                     <table class="table table-bordered">
@@ -29,6 +29,9 @@
                         </tr>
                         <tr>
                             <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuBarang.php' >Barang</a>"; ?></td>
+                        </tr>
+                        <tr>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPelanggan.php' >Pelanggan</a>"; ?></td>
                         </tr>
                     </table>
                 </div>

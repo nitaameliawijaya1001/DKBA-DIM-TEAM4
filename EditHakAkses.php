@@ -28,7 +28,7 @@
 		<div class="container">
 			<div class="card shadow mb-4 mt-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Tutotrial PHP : CRUD PDO OOP PHP - ROOT93.CO.ID</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h6>
 				</div>
 				<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 					<div class="card-body">

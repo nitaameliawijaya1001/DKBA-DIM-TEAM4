@@ -7,7 +7,7 @@
         private $jenisKelaminCode;
         private $tanggalLahir;
 
-        // public function __construct($idPelanggan, $NamaPelanggan, $AlamatPelanggan, $NoHP, $JenisKelaminCode, $TanggalLahir){
+        // function __construct($idPelanggan, $NamaPelanggan, $AlamatPelanggan, $NoHP, $JenisKelaminCode, $TanggalLahir){
         //     $this->idPelanggan = $idPelanggan;
         //     $this->namaPelanggan = $NamaPelanggan;
         //     $this->alamatPelanggan = $AlamatPelanggan;
@@ -16,27 +16,27 @@
         //     $this->tanggalLahir = $TanggalLahir;
         // }
 
-        public function getIdPelanggan(){
+        function getIdPelanggan(){
             return $this->idPelanggan;
         }
 
-        public function getNamaPelanggan(){
+        function getNamaPelanggan(){
             return $this->namaPelanggan;
         }
 
-        public function getAlamatPelanggan(){
+        function getAlamatPelanggan(){
             return $this->alamatPelanggan;
         }
 
-        public function getNoHP(){
+        function getNoHP(){
             return $this->noHP;
         }
         
-        public function getJenisKelaminCode(){
+        function getJenisKelaminCode(){
             return $this->jenisKelaminCode;
         }
 
-        public function getTanggalLahir(){
+        function getTanggalLahir(){
             return $this->tanggalLahir;
         }
 
@@ -172,7 +172,7 @@
                 $sql="DELETE FROM Pelanggan WHERE idPelanggan=:idPelanggan";
                 $stmt=$this->koneksi->prepare($sql);
                 
-                $data = new Barang;
+                $data = new Pelanggan;
                 $data->setIdPelanggan($pId);
 
                 $idPelanggan = $data->getIdPelanggan();
