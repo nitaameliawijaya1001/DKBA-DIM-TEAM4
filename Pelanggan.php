@@ -1,5 +1,6 @@
 <?php
-    class Pelanggan {
+    require_once('Connection.php');
+    class Pelanggan extends Connection{
         private $idPelanggan;
         private $namaPelanggan;
         private $alamatPelanggan;
@@ -57,7 +58,7 @@
         }
 
         function setJenisKelaminCode($jenisKelaminCode){
-            $this->njenisKelaminCodeoHP = $jenisKelaminCode;
+            $this->jenisKelaminCode = $jenisKelaminCode;
         }
 
         function setTanggalLahir($tanggalLahir){
@@ -88,13 +89,13 @@
                 $jenisKelaminCode = $data->getJenisKelaminCode();
                 $tanggalLahir = $data->getTanggalLahir();
 
-                $sql="INSERT INTO Pelanggan(idPelanggan, namaPelanggan, alamatPelanggan, noHP, jenisKelaminCode, tanggalLahir) VALUES (:idPelanggan, :namaPelanggan, :alamatPelanggan, :noHP, :jenisKelaminCode, :tanggalLahir)";
+                $sql="INSERT INTO Pelanggan(namaPelanggan, alamatPelanggan, noHP, jenisKelaminCode, tanggalLahir) VALUES (:namaPelanggan, :alamatPelanggan, :noHP, :jenisKelaminCode, :tanggalLahir)";
                 $stmt=$this->koneksi->prepare($sql);
-                    $stmt->bindParam(":idPelanggan", $namaPelanggan);
+                    $stmt->bindParam(":namaPelanggan", $namaPelanggan);
                     $stmt->bindParam(":alamatPelanggan", $alamatPelanggan);
                     $stmt->bindParam(":noHP", $noHP);
                     $stmt->bindParam(":jenisKelaminCode", $jenisKelaminCode);
-                    $stmt->bindParam(":tanggalLahir", $jenisKelaminCode);
+                    $stmt->bindParam(":tanggalLahir", $tanggalLahir);
                     $stmt->execute();
                     return true;
             } catch(PDOException $e) {
@@ -106,7 +107,7 @@
         function detailData($pId){
             # GET DATA
             try{
-                $sql ="SELECT idPelanggan, namaPelanggan, alamatPelanggan, noHP, jenisKelaminCode, tanggalLahir FROM Pelanggan WHERE IdPelanggan=:IdPelanggan";
+                $sql ="SELECT idPelanggan, namaPelanggan, alamatPelanggan, noHP, jenisKelaminCode, tanggalLahir FROM Pelanggan WHERE idPelanggan=:idPelanggan";
                 $stmt=$this->koneksi->prepare($sql);
 
                 $data = new Pelanggan;
@@ -114,7 +115,7 @@
 
                 $IdPelanggan = $data->getIdPelanggan();
 
-                $stmt->bindParam(":IdBarang",$IdPelanggan);
+                $stmt->bindParam(":idPelanggan",$IdPelanggan);
                 $stmt->execute();
                 $stmt->bindColumn(1, $this->idPelanggan);
                 $stmt->bindColumn(2, $this->namaPelanggan);

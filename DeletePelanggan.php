@@ -2,12 +2,12 @@
 <?php
 	require_once('Connection.php');
 	require_once('Pelanggan.php');
-	$obj = new CrudHakAkses;
+	$obj = new CrudPelanggan;
 
-	if(!$obj->detailData($_GET['IdAkses'])) die("Error : id akses tidak ada");
+	if(!$obj->detailData($_GET['idPelanggan'])) die("Error : id pelanggan tidak ada");
 	if($_SERVER['REQUEST_METHOD']=='POST'):
 
-		if($obj->delete($obj->IdAkses)):
+		if($obj->delete($obj->idPelanggan)):
 			echo '<div class="alert alert-success">Data berhasil dihapus</div>';
 		else:
 
@@ -36,19 +36,37 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Nama Akses :</label>
-								<label><?php echo $obj->NamaAkses; ?></label>
+								<label>Nama Pelanggan :</label>
+								<label><?php echo $obj->namaPelanggan; ?></label>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Keterangan :</label>
-								<label><?php echo $obj->Keterangan; ?></label>
+								<label>Alamat :</label>
+								<label><?php echo $obj->alamatPelanggan; ?></label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Nomor HP :</label>
+								<label><?php echo $obj->noHP; ?></label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Jenis Kelamin :</label>
+								<label><?php echo $obj->jenisKelaminCode; ?></label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Tanggal Lahir :</label>
+								<label><?php echo $obj->tanggalLahir; ?></label>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<button type="submit" class="mt-4 btn btn-md btn-primary">Delete</button>
-							<a href="MenuHakAkses.php" class="mt-4 btn btn-md btn-primary">Kembali</a>
+							<a href="MenuPelanggan.php" class="mt-4 btn btn-md btn-primary">Kembali</a>
 						</div>
 					</div>
 				</div>
