@@ -1,4 +1,5 @@
 <?php
+    require_once('Connection.php');
     class Penjualan {
         private $IdPenjualan;
         private $JumlahPenjualan;
