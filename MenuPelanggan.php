@@ -23,73 +23,62 @@
 <html>
     <head>
         <title>Tugas Kelompok - Introduction Data and Information Management - TEAM 4</title>
-
-        <link href="../assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
     </head>
     <body>
         <div class="container">
             <div class="card shadow mb-4 mt-4">
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
-                    </div>
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary"><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h3>
-                    </div>
+                <div class="card-header py-3">
+                    <h2>Tugas Kelompok - Introduction Data and Information Management</h2>
+                </div>
+                <div>
+                    <h4><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h4>
+                </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <div class="card-body">
-                        <div class="row">
-                            
-                            <div class="col-md-4">
-                                <div class="form-group">
+                    <fieldset>
+                        <legend>CRUD PELANGGAN</legend>
+                        <div class="card-body">
+                            <div class="row">
+                                <p>
                                     <label>Nama Pelanggan :</label>
                                     <input type="text" class="form-control" name="namaPelanggan"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Alamat :</label>
                                     <input type="text" class="form-control" name="alamatPelanggan"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Nomor HP :</label>
                                     <input type="text" class="form-control" name="noHP"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Jenis Kelamin :</label>
                                     <input type="text" class="form-control" name="jenisKelaminCode"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Tanggal Lahir :</label>
                                     <input type="text" class="form-control" name="tanggalLahir"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
+                                </p>
+                                <p>
+                                   <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
+                <h3>Tabel Pelanggan</h3>
                 <div class="row m-auto">
-                    <table class="table table-bordered">
+                    <table border="1">
                         <tr>
-                            <th>NO</th>
+                            <th>No</th>
                             <th>Id Pelanggan</th>
                             <th>Nama Pelanggan</th>
                             <th>Nomor HP</th>
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
-                            <th>AKSI</th>
+                            <th colspan="3">Aksi</th>
                         </tr>
                         <?php 
-                        $no=1;
+                            $no=1;
                             $data=$obj->showData();
                             if($data->rowCount()>0){
                                 while($row=$data->fetch(PDO::FETCH_ASSOC)){
@@ -101,10 +90,8 @@
                             <td><?php echo $row['noHP']; ?></td>
                             <td><?php echo $row['jenisKelaminCode']; ?></td>
                             <td><?php echo $row['tanggalLahir']; ?></td>
-                            <td>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='EditPelanggan.php?idPelanggan=".$row['idPelanggan']."'>edit</a>"; ?>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='DeletePelanggan.php?idPelanggan=".$row['idPelanggan']."'>delete</a>"; ?>
-                            </td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='EditPelanggan.php?idPelanggan=".$row['idPelanggan']."'>edit</a>"; ?></td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='DeletePelanggan.php?idPelanggan=".$row['idPelanggan']."'>delete</a>"; ?></td>
                         </tr>
                         <?php $no+=1; } $data->closeCursor();
                             }else{

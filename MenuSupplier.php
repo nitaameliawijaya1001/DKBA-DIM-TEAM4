@@ -21,57 +21,50 @@
 <html>
     <head>
         <title>Tugas Kelompok - Introduction Data and Information Management - TEAM 4</title>
-
-        <link href="../assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
     </head>
     <body>
         <div class="container">
             <div class="card shadow mb-4 mt-4">
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
-                    </div>
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary"><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h3>
-                    </div>
+                <div class="card-header py-3">
+                    <h2>Tugas Kelompok - Introduction Data and Information Management</h2>
+                </div>
+                <div>
+                    <h4><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h4>
+                </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <div class="card-body">
-                        <div class="row">
-                            
-                            <div class="col-md-4">
-                                <div class="form-group">
+                    <fieldset>
+                        <legend>CRUD PENGGUNA</legend>
+                        <div class="card-body">
+                            <div class="row">
+                                <p>
                                     <label>Nama Supplier :</label>
                                     <input type="text" class="form-control" name="namaSupplier"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Alamat :</label>
                                     <input type="text" class="form-control" name="alamat"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>noHP :</label>
                                     <input type="text" class="form-control" name="noHP"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
+                                </p>
+                                <p>
+                                    <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
+                <h3>Tabel Supplier</h3>
                 <div class="row m-auto">
-                    <table class="table table-bordered">
+                    <table border="1">
                         <tr>
-                            <th>NO</th>
+                            <th>No</th>
                             <th>Id Supplier</th>
                             <th>Nama Supplier</th>
                             <th>Alamat</th>
                             <th>Nomor HP</th>
-                            <th>AKSI</th>
+                            <th colspan="3">Aksi</th>
                         </tr>
                         <?php 
                         $no=1;
@@ -85,10 +78,8 @@
                             <td><?php echo $row['namaSupplier']; ?></td>
                             <td><?php echo $row['alamat']; ?></td>
                             <td><?php echo $row['noHP']; ?></td>
-                            <td>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='EditSupplier.php?idSupplier=".$row['idSupplier']."'>edit</a>"; ?>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='DeleteSupplier.php?idSupplier=".$row['idSupplier']."'>delete</a>"; ?>
-                            </td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='EditSupplier.php?idSupplier=".$row['idSupplier']."'>edit</a>"; ?></td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='DeleteSupplier.php?idSupplier=".$row['idSupplier']."'>delete</a>"; ?></td>
                         </tr>
                         <?php $no+=1; } $data->closeCursor();
                             }else{

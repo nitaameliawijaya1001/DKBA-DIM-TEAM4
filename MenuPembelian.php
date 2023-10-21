@@ -23,71 +23,60 @@
 <html>
     <head>
         <title>Tugas Kelompok - Introduction Data and Information Management - TEAM 4</title>
-
-        <link href="../assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
     </head>
     <body>
         <div class="container">
             <div class="card shadow mb-4 mt-4">
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
-                    </div>
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary"><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h3>
-                    </div>
+                <div class="card-header py-3">
+                    <h2>Tugas Kelompok - Introduction Data and Information Management</h2>
+                </div>
+                <div>
+                    <h4><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h4>
+                </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <div class="card-body">
-                        <div class="row">
-                            
-                            <div class="col-md-4">
-                                <div class="form-group">
+                    <fieldset>
+                        <legend>CRUD HAK AKSES</legend>
+                        <div class="card-body">
+                            <div class="row">
+                                <p>
                                     <label>Jumlah Pembelian :</label>
                                     <input type="text" class="form-control" name="JumlahPembelian"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Harga Beli :</label>
                                     <input type="text" class="form-control" name="HargaBeli"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Id Pengguna :</label>
                                     <input type="text" class="form-control" name="IdPengguna"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Id Barang :</label>
                                     <input type="text" class="form-control" name="IdBarang"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
+                                </p>
+                                <p>
                                     <label>Id Supplier :</label>
                                     <input type="text" class="form-control" name="idSupplier"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
+                                </p>
+                                <p>
+                                    <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
+                <h3>Tabel Pembelian</h3>
                 <div class="row m-auto">
-                    <table class="table table-bordered">
+                    <table border="1">
                         <tr>
-                            <th>NO</th>
+                            <th>No</th>
                             <th>Id Pembelian</th>
                             <th>Jumlah Pembelian</th>
                             <th>Harga Beli</th>
                             <th>Id Pengguna</th>
                             <th>Id Barang</th>
                             <th>Id Supplier</th>
-                            <th>AKSI</th>
+                            <th colspan="3">Aksi</th>
                         </tr>
                         <?php 
                         $no=1;
@@ -103,10 +92,8 @@
                             <td><?php echo $row['IdPengguna']; ?></td>
                             <td><?php echo $row['IdBarang']; ?></td>
                             <td><?php echo $row['idSupplier']; ?></td>
-                            <td>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='EditPembelian.php?IdPembelian=".$row['IdPembelian']."'>edit</a>"; ?>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='DeletePembelian.php?IdPembelian=".$row['IdPembelian']."'>delete</a>"; ?>
-                            </td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='EditPembelian.php?IdPembelian=".$row['IdPembelian']."'>edit</a>"; ?></td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='DeletePembelian.php?IdPembelian=".$row['IdPembelian']."'>delete</a>"; ?></td>
                         </tr>
                         <?php $no+=1; } $data->closeCursor();
                             }else{

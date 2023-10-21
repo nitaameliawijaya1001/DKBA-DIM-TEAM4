@@ -20,55 +20,48 @@
 <html>
     <head>
         <title>Tugas Kelompok - Introduction Data and Information Management - TEAM 4</title>
-
-        <link href="../assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
     </head>
     <body>
         <div class="container">
             <div class="card shadow mb-4 mt-4">
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
-                    </div>
-                    <div class="card-header py-3">
-                        <h3 class="m-0 font-weight-bold text-primary"><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h3>
-                    </div>
+                <div class="card-header py-3">
+                    <h2>Tugas Kelompok - Introduction Data and Information Management</h2>
+                </div>
+                <div>
+                    <h4><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h4>
+                </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <div class="card-body">
-                        <div class="row">
-                            
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Nama Akses :</label>
-                                    <input type="text" class="form-control" name="NamaAkses"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Keterangan :</label>
-                                    <input type="text" class="form-control" name="Keterangan"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                
-                                    <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
-                            
+                    <fieldset>
+                        <legend>CRUD HAK AKSES</legend>
+                        <div class="card-body">
+                            <div class="row">
+                            <p>
+                                <label>Nama Akses :</label>
+                                <input type="text" class="form-control" name="NamaAkses"/>
+                            </p>
+                            <p>
+                                <label>Keterangan :</label>
+                                <input type="text" class="form-control" name="Keterangan"/>
+                            </p>
+                            <p>
+                                <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
+                            </p>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
+                <h3>Tabel Hak Akses</h3>
                 <div class="row m-auto">
-                    <table class="table table-bordered">
+                    <table border="1">
                         <tr>
-                            <th>NO</th>
+                            <th>No</th>
                             <th>Id Akses</th>
                             <th>Nama Akses</th>
                             <th>Keterangan</th>
-                            <th>AKSI</th>
+                            <th colspan="3">Aksi</th>
                         </tr>
                         <?php 
-                        $no=1;
+                            $no=1;
                             $data=$obj->showData();
                             if($data->rowCount()>0){
                                 while($row=$data->fetch(PDO::FETCH_ASSOC)){
@@ -78,10 +71,8 @@
                             <td><?php echo $row['IdAkses']; ?></td>
                             <td><?php echo $row['NamaAkses']; ?></td>
                             <td><?php echo $row['Keterangan']; ?></td>
-                            <td>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='EditHakAkses.php?IdAkses=".$row['IdAkses']."'>edit</a>"; ?>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='DeleteHakAkses.php?IdAkses=".$row['IdAkses']."'>delete</a>"; ?>
-                            </td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='EditHakAkses.php?IdAkses=".$row['IdAkses']."'>edit</a>"; ?></td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='DeleteHakAkses.php?IdAkses=".$row['IdAkses']."'>delete</a>"; ?></td>
                         </tr>
                         <?php $no+=1; } $data->closeCursor();
                             }else{
