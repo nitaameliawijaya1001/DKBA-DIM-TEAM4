@@ -1,13 +1,16 @@
 <?php 
     require_once('Connection.php');
-    require_once('HakAkses.php');
+    require_once('Pembelian.php');
 
-    $obj = new CrudHakAkses;
+    $obj = new CrudPembelian;
 
     if($_SERVER['REQUEST_METHOD']=='POST'):
-        $NamaAkses = $_POST['NamaAkses'];
-        $Keterangan = $_POST['Keterangan'];
-        if($obj->insertData($NamaAkses, $Keterangan)):
+		$JumlahPembelian = $_POST['JumlahPembelian'];
+		$HargaBeli = $_POST['HargaBeli'];
+		$IdPengguna = $_POST['IdPengguna'];
+		$IdBarang = $_POST['IdBarang'];
+		$IdSupplier = $_POST['IdSupplier'];
+        if($obj->insertData($JumlahPembelian, $HargaBeli, $IdPengguna, $IdBarang, $IdSupplier)):
             echo '<div class="alert alert-success">Data berhasil disimpan</div>';
         else:
 
@@ -37,20 +40,36 @@
                             
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Nama Akses :</label>
-                                    <input type="text" class="form-control" name="NamaAkses"/>
+                                    <label>Nama Pelanggan :</label>
+                                    <input type="text" class="form-control" name="namaPelanggan"/>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Keterangan :</label>
-                                    <input type="text" class="form-control" name="Keterangan"/>
+                                    <label>Alamat :</label>
+                                    <input type="text" class="form-control" name="alamatPelanggan"/>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                
-                                    <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
-                            
+                                <div class="form-group">
+                                    <label>Nomor HP :</label>
+                                    <input type="text" class="form-control" name="noHP"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Jenis Kelamin :</label>
+                                    <input type="text" class="form-control" name="jenisKelaminCode"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir :</label>
+                                    <input type="text" class="form-control" name="tanggalLahir"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -59,9 +78,11 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>NO</th>
-                            <th>Id Akses</th>
-                            <th>Nama Akses</th>
-                            <th>Keterangan</th>
+                            <th>Id Pelanggan</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Nomor HP</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tanggal Lahir</th>
                             <th>AKSI</th>
                         </tr>
                         <?php 
@@ -72,12 +93,14 @@
                         ?>
                         <tr>
                             <td><?php echo $no; ?></td>
-                            <td><?php echo $row['IdAkses']; ?></td>
-                            <td><?php echo $row['NamaAkses']; ?></td>
-                            <td><?php echo $row['Keterangan']; ?></td>
+                            <td><?php echo $row['idPelanggan']; ?></td>
+                            <td><?php echo $row['namaPelanggan']; ?></td>
+                            <td><?php echo $row['noHP']; ?></td>
+                            <td><?php echo $row['jenisKelaminCode']; ?></td>
+                            <td><?php echo $row['tanggalLahir']; ?></td>
                             <td>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='EditHakAkses.php?IdAkses=".$row['IdAkses']."'>edit</a>"; ?>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='DeleteHakAkses.php?IdAkses=".$row['IdAkses']."'>delete</a>"; ?>
+                                <?php echo "<a class='btn btn-sm btn-primary' href='EditPelanggan.php?idPelanggan=".$row['idPelanggan']."'>edit</a>"; ?>
+                                <?php echo "<a class='btn btn-sm btn-primary' href='DeletePelanggan.php?idPelanggan=".$row['idPelanggan']."'>delete</a>"; ?>
                             </td>
                         </tr>
                         <?php $no+=1; } $data->closeCursor();

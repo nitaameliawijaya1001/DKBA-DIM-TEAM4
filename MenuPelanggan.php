@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tutorial PHP : CRUD PDO PHP</title>
+        <title>Tugas Kelompok - Introduction Data and Information Management - TEAM 4</title>
 
         <link href="../assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
