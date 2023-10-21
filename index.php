@@ -20,7 +20,7 @@
         <div class="container">
             <div class="card shadow mb-4 mt-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h6>
+                    <h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
                 </div>
                 <div class="row m-auto">
                     <table class="table table-bordered">
@@ -34,7 +34,7 @@
                             <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPelanggan.php' >Pelanggan</a>"; ?></td>
                         </tr>
                         <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPembelian.php' >Pelanggan</a>"; ?></td>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPembelian.php' >Pembelian</a>"; ?></td>
                         </tr>
                     </table>
                 </div>

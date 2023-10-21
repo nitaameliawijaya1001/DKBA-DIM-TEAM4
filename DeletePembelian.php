@@ -1,13 +1,13 @@
 
 <?php
 	require_once('Connection.php');
-	require_once('HakAkses.php');
-	$obj = new CrudHakAkses;
+	require_once('Pembelian.php');
+	$obj = new CrudPembelian;
 
-	if(!$obj->detailData($_GET['IdAkses'])) die("Error : id akses tidak ada");
+	if(!$obj->detailData($_GET['IdPembelian'])) die("Error : id pembelian tidak ada");
 	if($_SERVER['REQUEST_METHOD']=='POST'):
 
-		if($obj->delete($obj->IdAkses)):
+		if($obj->delete($obj->IdPembelian)):
 			echo '<div class="alert alert-success">Data berhasil dihapus</div>';
 		else:
 
@@ -36,19 +36,37 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Nama Akses :</label>
-								<label><?php echo $obj->NamaAkses; ?></label>
+								<label>Jumlah Pembelian :</label>
+								<label><?php echo $obj->JumlahPembelian; ?></label>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label>Keterangan :</label>
-								<label><?php echo $obj->Keterangan; ?></label>
+								<label>Harga Beli :</label>
+								<label><?php echo $obj->HargaBeli; ?></label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Id Pengguna :</label>
+								<label><?php echo $obj->IdPengguna; ?></label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Id Barang :</label>
+								<label><?php echo $obj->IdBarang; ?></label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Id Supplier :</label>
+								<label><?php echo $obj->idSupplier; ?></label>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<button type="submit" class="mt-4 btn btn-md btn-primary">Delete</button>
-							<a href="MenuHakAkses.php" class="mt-4 btn btn-md btn-primary">Kembali</a>
+							<a href="MenuPembelian.php" class="mt-4 btn btn-md btn-primary">Kembali</a>
 						</div>
 					</div>
 				</div>

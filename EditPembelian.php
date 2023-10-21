@@ -1,16 +1,16 @@
 <?php
 	require_once('Connection.php');
-	require_once('Pelanggan.php');
-	$obj = new CrudPelanggan;
+	require_once('Pembelian.php');
+	$obj = new CrudPembelian;
 
-	if(!$obj->detailData($_GET['idPelanggan'])) die("Error : Id Pelanggan tidak ada");
+	if(!$obj->detailData($_GET['IdPembelian'])) die("Error : Id Pembelian tidak ada");
 	if($_SERVER['REQUEST_METHOD']=='POST'):
-		$namaPelanggan = $_POST['namaPelanggan'];
-		$alamatPelanggan = $_POST['alamatPelanggan'];
-		$noHP = $_POST['noHP'];
-		$jenisKelaminCode = $_POST['jenisKelaminCode'];
-		$tanggalLahir = $_POST['tanggalLahir'];
-		if($obj->updateData($namaPelanggan, $alamatPelanggan, $noHP, $jenisKelaminCode, $tanggalLahir, $obj->idPelanggan)):
+		$JumlahPembelian = $_POST['JumlahPembelian'];
+		$HargaBeli = $_POST['HargaBeli'];
+		$IdPengguna = $_POST['IdPengguna'];
+		$IdBarang = $_POST['IdBarang'];
+		$idSupplier = $_POST['idSupplier'];
+		if($obj->updateData($JumlahPembelian, $HargaBeli, $IdPengguna, $IdBarang, $idSupplier, $obj->IdPembelian)):
 			echo '<div class="alert alert-success">Data berhasil disimpan!!</div>';
 		else:
 			echo '<div class="alert alert-danger">Data berhasil disimpan----</div>';
@@ -38,37 +38,37 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Nama Pelanggan :</label>
-									<input type="text" class="form-control" name="namaPelanggan" value="<?php echo $obj->namaPelanggan; ?>"/>
+									<label>Jumlah Pembelian :</label>
+									<input type="text" class="form-control" name="JumlahPembelian" value="<?php echo $obj->JumlahPembelian; ?>"/>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Alamat :</label>
-									<input type="text" class="form-control" name="alamatPelanggan" value="<?php echo $obj->alamatPelanggan; ?>"/>
+									<label>Harga Beli :</label>
+									<input type="text" class="form-control" name="HargaBeli" value="<?php echo $obj->HargaBeli; ?>"/>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Nomor HP :</label>
-									<input type="text" class="form-control" name="noHP" value="<?php echo $obj->noHP; ?>"/>
+									<label>Id Pengguna :</label>
+									<input type="text" class="form-control" name="IdPengguna" value="<?php echo $obj->IdPengguna; ?>"/>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Jenis Kelamin :</label>
-									<input type="text" class="form-control" name="jenisKelaminCode" value="<?php echo $obj->jenisKelaminCode; ?>"/>
+									<label>Id Barang :</label>
+									<input type="text" class="form-control" name="IdBarang" value="<?php echo $obj->IdBarang; ?>"/>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Tanggal Lahir :</label>
-									<input type="text" class="form-control" name="tanggalLahir" value="<?php echo $obj->tanggalLahir; ?>"/>
+									<label>Id Supplier :</label>
+									<input type="text" class="form-control" name="idSupplier" value="<?php echo $obj->idSupplier; ?>"/>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<button type="submit" class="mt-4 btn btn-md btn-primary"> Simpan</button>
-								<a href="MenuPelanggan.php" class="mt-4 btn btn-md btn-primary">Kembali</a>
+								<a href="MenuPembelian.php" class="mt-4 btn btn-md btn-primary">Kembali</a>
 							</div>
 						</div>
 					</div>

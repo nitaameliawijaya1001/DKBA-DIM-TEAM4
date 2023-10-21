@@ -9,8 +9,8 @@
 		$HargaBeli = $_POST['HargaBeli'];
 		$IdPengguna = $_POST['IdPengguna'];
 		$IdBarang = $_POST['IdBarang'];
-		$IdSupplier = $_POST['IdSupplier'];
-        if($obj->insertData($JumlahPembelian, $HargaBeli, $IdPengguna, $IdBarang, $IdSupplier)):
+		$idSupplier = $_POST['idSupplier'];
+        if($obj->insertData($JumlahPembelian, $HargaBeli, $IdPengguna, $IdBarang, $idSupplier)):
             echo '<div class="alert alert-success">Data berhasil disimpan</div>';
         else:
 
@@ -32,7 +32,10 @@
         <div class="container">
             <div class="card shadow mb-4 mt-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h6>
+                        <h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
+                    </div>
+                    <div class="card-header py-3">
+                        <h3 class="m-0 font-weight-bold text-primary"><?php echo "<a class='btn btn-sm btn-primary' href='index.php'>Home</a>"; ?></h3>
                     </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <div class="card-body">
@@ -40,32 +43,32 @@
                             
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Nama Pelanggan :</label>
-                                    <input type="text" class="form-control" name="namaPelanggan"/>
+                                    <label>Jumlah Pembelian :</label>
+                                    <input type="text" class="form-control" name="JumlahPembelian"/>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Alamat :</label>
-                                    <input type="text" class="form-control" name="alamatPelanggan"/>
+                                    <label>Harga Beli :</label>
+                                    <input type="text" class="form-control" name="HargaBeli"/>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Nomor HP :</label>
-                                    <input type="text" class="form-control" name="noHP"/>
+                                    <label>Id Pengguna :</label>
+                                    <input type="text" class="form-control" name="IdPengguna"/>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Jenis Kelamin :</label>
-                                    <input type="text" class="form-control" name="jenisKelaminCode"/>
+                                    <label>Id Barang :</label>
+                                    <input type="text" class="form-control" name="IdBarang"/>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Tanggal Lahir :</label>
-                                    <input type="text" class="form-control" name="tanggalLahir"/>
+                                    <label>Id Supplier :</label>
+                                    <input type="text" class="form-control" name="idSupplier"/>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -78,11 +81,12 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>NO</th>
-                            <th>Id Pelanggan</th>
-                            <th>Nama Pelanggan</th>
-                            <th>Nomor HP</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tanggal Lahir</th>
+                            <th>Id Pembelian</th>
+                            <th>Jumlah Pembelian</th>
+                            <th>Harga Beli</th>
+                            <th>Id Pengguna</th>
+                            <th>Id Barang</th>
+                            <th>Id Supplier</th>
                             <th>AKSI</th>
                         </tr>
                         <?php 
@@ -93,14 +97,15 @@
                         ?>
                         <tr>
                             <td><?php echo $no; ?></td>
-                            <td><?php echo $row['idPelanggan']; ?></td>
-                            <td><?php echo $row['namaPelanggan']; ?></td>
-                            <td><?php echo $row['noHP']; ?></td>
-                            <td><?php echo $row['jenisKelaminCode']; ?></td>
-                            <td><?php echo $row['tanggalLahir']; ?></td>
+                            <td><?php echo $row['IdPembelian']; ?></td>
+                            <td><?php echo $row['JumlahPembelian']; ?></td>
+                            <td><?php echo $row['HargaBeli']; ?></td>
+                            <td><?php echo $row['IdPengguna']; ?></td>
+                            <td><?php echo $row['IdBarang']; ?></td>
+                            <td><?php echo $row['idSupplier']; ?></td>
                             <td>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='EditPelanggan.php?idPelanggan=".$row['idPelanggan']."'>edit</a>"; ?>
-                                <?php echo "<a class='btn btn-sm btn-primary' href='DeletePelanggan.php?idPelanggan=".$row['idPelanggan']."'>delete</a>"; ?>
+                                <?php echo "<a class='btn btn-sm btn-primary' href='EditPembelian.php?IdPembelian=".$row['IdPembelian']."'>edit</a>"; ?>
+                                <?php echo "<a class='btn btn-sm btn-primary' href='DeletePembelian.php?IdPembelian=".$row['IdPembelian']."'>delete</a>"; ?>
                             </td>
                         </tr>
                         <?php $no+=1; } $data->closeCursor();

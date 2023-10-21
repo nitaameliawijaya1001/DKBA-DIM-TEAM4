@@ -28,7 +28,7 @@
 		<div class="container">
 			<div class="card shadow mb-4 mt-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h6>
+					<h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
 				</div>
 				<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 					<div class="card-body">

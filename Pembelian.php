@@ -1,20 +1,20 @@
 <?php
     require_once('Connection.php');
-    class Pembelian {
+    class Pembelian extends Connection{
         private $IdPembelian;
         private $JumlahPembelian;
         private $HargaBeli;
         private $IdPengguna;
         private $IdBarang;
-        private $IdSupplier;
+        private $idSupplier;
 
-        // public function __construct($idPembelian, $NamaPembelian, $HargaBeli, $IdPengguna, $IdBarang, $IdSupplier){
+        // public function __construct($idPembelian, $NamaPembelian, $HargaBeli, $IdPengguna, $IdBarang, $idSupplier){
         //     $this->idPembelian = $idPembelian;
         //     $this->namaPembelian = $NamaPembelian;
         //     $this->hargaBeli = $HargaBeli;
         //     $this->idPengguna = $IdPengguna;
         //     $this->idBarang = $IdBarang;
-        //     $this->idSupplier = $IdSupplier;
+        //     $this->idSupplier = $idSupplier;
         // }
 
         function getIdPembelian(){ return $this->IdPembelian; }
@@ -22,45 +22,45 @@
         function getHargaBeli(){ return $this->HargaBeli; }
         function getIdPengguna(){ return $this->IdPengguna; }
         function getIdBarang(){ return $this->IdBarang; }
-        function getIdSupplier(){ return $this->IdSupplier; }
+        function getidSupplier(){ return $this->idSupplier; }
         function setIdPembelian($IdPembelian){ $this->IdPembelian = $IdPembelian; }
         function setJumlahPembelian($JumlahPembelian){ $this->JumlahPembelian = $JumlahPembelian; }
         function setHargaBeli($HargaBeli){ $this->HargaBeli = $HargaBeli; }
         function setIdPengguna($IdPengguna){ $this->IdPengguna = $IdPengguna; }
         function setIdBarang($IdBarang){ $this->IdBarang = $IdBarang; }
-        function setIdSupplier($IdSupplier){ $this->IdSupplier = $IdSupplier; }
+        function setidSupplier($idSupplier){ $this->idSupplier = $idSupplier; }
     }
 
     class CrudPembelian extends Pembelian{
         function showData(){
-            $sql ="SELECT * FROM Pemblian";
+            $sql ="SELECT * FROM Pembelian";
             $stmt=$this->koneksi->prepare($sql);
             $stmt->execute();
             return $stmt;
         }
 
-        function insertData($pJumlahPembelian, $pHargaBeli, $pIdPengguna, $pIdBarang, $pIdSupplier){
+        function insertData($pJumlahPembelian, $pHargaBeli, $pIdPengguna, $pIdBarang, $pidSupplier){
             try {
                 $data = new Pembelian;
                 $data->setJumlahPembelian($pJumlahPembelian,);
                 $data->setHargaBeli($pHargaBeli,);
                 $data->setIdPengguna($pIdPengguna,);
                 $data->setIdBarang($pIdBarang,);
-                $data->setIdSupplier($pIdSupplier,);
+                $data->setidSupplier($pidSupplier,);
 
                 $JumlahPembelian = $data->getJumlahPembelian();
                 $HargaBeli = $data->getHargaBeli();
                 $IdPengguna = $data->getIdPengguna();
                 $IdBarang = $data->getIdBarang();
-                $IdSupplier = $data->getIdSupplier();
+                $idSupplier = $data->getidSupplier();
 
-                $sql="INSERT INTO Pembelian(JumlahPembelian,HargaBeli,IdPengguna,IdBarang,IdSupplier) VALUES (:JumlahPembelian, :HargaBeli, :IdPengguna, :IdBarang, :IdSupplier)";
+                $sql="INSERT INTO Pembelian(JumlahPembelian,HargaBeli,IdPengguna,IdBarang,idSupplier) VALUES (:JumlahPembelian, :HargaBeli, :IdPengguna, :IdBarang, :idSupplier)";
                 $stmt=$this->koneksi->prepare($sql);
                 $stmt->bindParam(':JumlahPembelian', $JumlahPembelian);
                 $stmt->bindParam(':HargaBeli', $HargaBeli);
                 $stmt->bindParam(':IdPengguna', $IdPengguna);
                 $stmt->bindParam(':IdBarang', $IdBarang);
-                $stmt->bindParam(':IdSupplier', $IdSupplier);                
+                $stmt->bindParam(':idSupplier', $idSupplier);                
                 $stmt->execute();
                 return true;
             } catch(PDOException $e) {
@@ -69,25 +69,25 @@
             }
         }
 
-        function detailData($pIdPembelian){
+        function detailData($pId){
             # GET DATA
             try{
-                $sql ="SELECT IdPembelian, JumlahPembelian, HargaBeli, IdPengguna, IdBarang, idSupplier FROM pembelian WHERE IdPembelian=:IdPembelian";
+                $sql ="SELECT IdPembelian, JumlahPembelian, HargaBeli, IdPengguna, IdBarang, idSupplier FROM Pembelian WHERE IdPembelian=:IdPembelian";
                 $stmt=$this->koneksi->prepare($sql);
 
                 $data = new Pembelian;
-                $data->setIdPembelian($pIdPembelian);
+                $data->setIdPembelian($pId);
 
-                $IdBarang = $data->getIdBarang();
+                $IdPembelian = $data->getIdPembelian();
 
-                $stmt->bindParam(":IdBarang",$IdBarang);
+                $stmt->bindParam(":IdPembelian",$IdPembelian);
                 $stmt->execute();
-                $stmt->bindParam(1, $this->IdPembelian);
-                $stmt->bindParam(2, $this->JumlahPembelian);
-                $stmt->bindParam(3, $this->HargaBeli);
-                $stmt->bindParam(4, $this->IdPengguna);
-                $stmt->bindParam(5, $this->IdBarang);
-                $stmt->bindParam(6, $this->IdSupplier);
+                $stmt->bindColumn(1, $this->IdPembelian);
+                $stmt->bindColumn(2, $this->JumlahPembelian);
+                $stmt->bindColumn(3, $this->HargaBeli);
+                $stmt->bindColumn(4, $this->IdPengguna);
+                $stmt->bindColumn(5, $this->IdBarang);
+                $stmt->bindColumn(6, $this->idSupplier);
                 $stmt->fetch(PDO::FETCH_ASSOC);
                 if($stmt->rowCount()==1):
                     return true;
@@ -99,10 +99,10 @@
             }
         }
 
-        function updateData($pJumlahPembelian, $pHargaBeli, $pIdPengguna, $pIdBarang, $pIdSupplier, $pIdPembelian){
+        function updateData($pJumlahPembelian, $pHargaBeli, $pIdPengguna, $pIdBarang, $pidSupplier, $pIdPembelian){
             try {
                 
-                $sql="UPDATE Pembelian SET JumlahPembelian=:JumlahPembelian,HargaBeli=:HargaBeli,IdPengguna=:IdPengguna,IdBarang=:IdBarang,IdSupplier=:'IdSupplier WHERE IdPembelian=:IdPembelian";
+                $sql="UPDATE Pembelian SET JumlahPembelian=:JumlahPembelian,HargaBeli=:HargaBeli,IdPengguna=:IdPengguna,IdBarang=:IdBarang,idSupplier=:idSupplier WHERE IdPembelian=:IdPembelian";
                 $stmt=$this->koneksi->prepare($sql);
                 
                 $data = new Pembelian;
@@ -111,21 +111,21 @@
                 $data->setHargaBeli($pHargaBeli,);
                 $data->setIdPengguna($pIdPengguna,);
                 $data->setIdBarang($pIdBarang,);
-                $data->setIdSupplier($pIdSupplier,);
+                $data->setidSupplier($pidSupplier,);
 
                 $IdPembelian = $data->getIdPembelian();
                 $JumlahPembelian = $data->getJumlahPembelian();
                 $HargaBeli = $data->getHargaBeli();
                 $IdPengguna = $data->getIdPengguna();
                 $IdBarang = $data->getIdBarang();
-                $IdSupplier = $data->getIdSupplier();
+                $idSupplier = $data->getidSupplier();
 
                 $stmt->bindParam(':IdPembelian', $IdPembelian);
                 $stmt->bindParam(':JumlahPembelian', $JumlahPembelian);
                 $stmt->bindParam(':HargaBeli', $HargaBeli);
                 $stmt->bindParam(':IdPengguna', $IdPengguna);
                 $stmt->bindParam(':IdBarang', $IdBarang);
-                $stmt->bindParam(':IdSupplier', $IdSupplier);
+                $stmt->bindParam(':idSupplier', $idSupplier);
                 $stmt->execute();
                 return true;
             } catch(PDOException $e) {
@@ -136,15 +136,15 @@
 
         function delete ($pId){
             try{
-                $sql="DELETE FROM Pembeli WHERE IdPembelian=:IdPembelian";
+                $sql="DELETE FROM Pembelian WHERE IdPembelian=:IdPembelian";
                 $stmt=$this->koneksi->prepare($sql);
                 
                 $data = new Pembelian;
                 $data->setIdPembelian($pId);
 
-                $IdBarang = $data->getIdPembelian();
+                $IdPembelian = $data->getIdPembelian();
                 
-                $stmt->execute(array("IdPembelian"=>$pId));
+                $stmt->execute(array("IdPembelian"=>$IdPembelian));
                 return true;
             } catch(PDOException $e) {
                 echo $e->getMessage();
