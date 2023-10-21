@@ -42,6 +42,9 @@
                         <tr>
                             <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPenjualan.php' >Penjualan</a>"; ?></td>
                         </tr>
+                        <tr>
+                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuSupplier.php' >Supplier</a>"; ?></td>
+                        </tr>
                     </table>
                 </div>
             </div>

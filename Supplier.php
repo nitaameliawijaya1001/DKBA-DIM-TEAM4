@@ -1,6 +1,6 @@
 <?php 
     require_once('Connection.php');
-    class Supplier {
+    class Supplier extends Connection {
         private $idSupplier;
         private $namaSupplier;
         private $alamat;
@@ -58,7 +58,7 @@
         function detailData($pId){
             # GET DATA
             try{
-                $sql ="SELECT idSupplier, namaSupplier, alamat, noHP FROM Supplier WHERE IdSupplier=:IdSupplier";
+                $sql ="SELECT idSupplier, namaSupplier, alamat, noHP FROM supplier  WHERE idSupplier=:idSupplier";
                 $stmt=$this->koneksi->prepare($sql);
 
                 $data = new Supplier;
@@ -66,12 +66,12 @@
 
                 $idSupplier = $data->getidSupplier();
 
-                $stmt->bindParam(":IdSupplier",$idSupplier);
+                $stmt->bindParam(":idSupplier",$idSupplier);
                 $stmt->execute();
-                $stmt->bindParam(1, $this->idSupplier);
-                $stmt->bindParam(2, $this->namaSupplier);
-                $stmt->bindParam(3, $this->alamat);
-                $stmt->bindParam(4, $this->noHP);                
+                $stmt->bindColumn(1, $this->idSupplier);
+                $stmt->bindColumn(2, $this->namaSupplier);
+                $stmt->bindColumn(3, $this->alamat);
+                $stmt->bindColumn(4, $this->noHP);
                 $stmt->fetch(PDO::FETCH_ASSOC);
                 if($stmt->rowCount()==1):
                     return true;
