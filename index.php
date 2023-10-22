@@ -1,50 +1,55 @@
-<!-- <?php
-    // require_once('ControllerHakAkses.php');
+<?php
 
-    // $controller_pegawai = new ControllerHakAkses();
-    // $controller_pegawai->index();
+// Path to the front controller (this file)
+define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 
-    
-?> -->
+// Ensure the current directory is pointing to the front controller's directory
+chdir(FCPATH);
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Tugas Kelompok - Introduction Data and Information Management - TEAM 4</title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="card shadow mb-4 mt-4">
-                <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold text-primary">Tugas Kelompok - Introduction Data and Information Management</h3>
-                </div>
-                <div class="row m-auto">
-                    <table border="1">
-                        <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuHakAkses.php' >Hak Akses</a>"; ?></td>
-                        </tr>
-                        <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuBarang.php' >Barang</a>"; ?></td>
-                        </tr>
-                        <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPelanggan.php' >Pelanggan</a>"; ?></td>
-                        </tr>
-                        <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPembelian.php' >Pembelian</a>"; ?></td>
-                        </tr>
-                        <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPengguna.php' >Pengguna</a>"; ?></td>
-                        </tr>
-                        <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuPenjualan.php' >Penjualan</a>"; ?></td>
-                        </tr>
-                        <tr>
-                            <td><?php echo "<a class='btn btn-sm btn-primary' href='MenuSupplier.php' >Supplier</a>"; ?></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+/*
+ *---------------------------------------------------------------
+ * BOOTSTRAP THE APPLICATION
+ *---------------------------------------------------------------
+ * This process sets up the path constants, loads and registers
+ * our autoloader, along with Composer's, loads our constants
+ * and fires up an environment-specific bootstrapping.
+ */
 
-    </body>
-</html>
+// Load our paths config file
+// This is the line that might need to be changed, depending on your folder structure.
+require FCPATH . '../app/Config/Paths.php';
+// ^^^ Change this line if you move your application folder
+
+$paths = new Config\Paths();
+
+// Location of the framework bootstrap file.
+require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
+// Load environment settings from .env files into $_SERVER and $_ENV
+require_once SYSTEMPATH . 'Config/DotEnv.php';
+(new CodeIgniter\Config\DotEnv(ROOTPATH))->load();
+
+/*
+ * ---------------------------------------------------------------
+ * GRAB OUR CODEIGNITER INSTANCE
+ * ---------------------------------------------------------------
+ *
+ * The CodeIgniter class contains the core functionality to make
+ * the application run, and does all of the dirty work to get
+ * the pieces all working together.
+ */
+
+$app = Config\Services::codeigniter();
+$app->initialize();
+$context = is_cli() ? 'php-cli' : 'web';
+$app->setContext($context);
+
+/*
+ *---------------------------------------------------------------
+ * LAUNCH THE APPLICATION
+ *---------------------------------------------------------------
+ * Now that everything is setup, it's time to actually fire
+ * up the engines and make this app do its thang.
+ */
+
+$app->run();

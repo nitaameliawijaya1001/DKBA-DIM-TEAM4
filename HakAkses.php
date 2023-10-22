@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 
     require_once('Connection.php');
@@ -142,3 +145,5 @@
     
 
 ?>
+
+</html>
