@@ -1,6 +1,5 @@
 .idea/
-dokumen/
 public/
-template/
 README.md.bk
-tempCodeRunnerFile.php.bk
+node_modules
+tempCodeRunnerFile.php
